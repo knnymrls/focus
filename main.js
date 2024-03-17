@@ -1,24 +1,51 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
 
 document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
+  <button></button>
 `
 
-setupCounter(document.querySelector('#counter'))
+class todo {
+  constructor(title, completion, index) {
+    this.title = title
+    this.completion = completion
+    this.index = index
+  }
+}
+
+let todos = [];
+
+function createTodo(title) {
+  let index = todos.length
+  let newTodo = new todo(`${title}`, false, index)
+  todos.push(newTodo)
+}
+
+function deleteTodo(index) {
+  let temp = [];
+  for (let i = 0; i < todos.length; i++) {
+    if (i != index) {
+      temp.push(todos[i])
+    }
+  }
+  todos = temp
+  reIndex()
+}
+
+function reIndex() {
+  for (let i = 0; i < todos.length; i++) {
+    todos[i].index = i
+  }
+}
+
+
+function completedTodo(todo) {
+  todo.completion = true;
+}
+
+createTodo('go on a run')
+createTodo('go on a walk')
+createTodo('go on a hike')
+deleteTodo(1)
+
+
+console.log(todos)
