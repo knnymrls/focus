@@ -1,6 +1,7 @@
 # Focus
 
 **Focus** is more than just an app; it's your productivity companion, designed to help you minimize distractions and dive straight into your work. Born out of a personal need to enhance work efficiency without the hassle of navigating through endless to-do lists, Focus streamlines the process of getting things done. With a primary emphasis on a distraction-free initiation of work sessions, accompanied by a simplistic todo list management, this app isn't just another item on your productivity stack—it's the solution to it.
+
 **Website:** https://knnymrls.github.io/focus/
 ## Features
 
