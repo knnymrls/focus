@@ -1,0 +1,51 @@
+import { deleteTodo, todos } from './todoActions';
+import TodoCard from '../components/todoCard';
+
+//TODO: Make sure to add jsdoc comments to all functions
+
+function clearUI() {
+    const container = document.querySelector('#todos-container');
+    if (container) {
+        container.remove();
+    }
+}
+
+function createDeleteButton(index) {
+    const delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+    delBtn.onclick = () => {
+        deleteTodo(index);
+        displayUI();
+    };
+    return delBtn;
+}
+
+function displayTodos(todosContainer) {
+    todos.forEach((todo) => {
+        const todoCard = TodoCard(todo, {
+            onDelete: () => deleteTodo(todo.index)
+        });
+        todosContainer.appendChild(todoCard);
+    });
+}
+
+function displayUI() {
+    clearUI(); // Clear the UI before redrawing
+
+    const todosContainer = document.createElement('div');
+    todosContainer.id = 'todos-container';
+    document.querySelector('#app').appendChild(todosContainer);
+
+    displayTodos(todosContainer);
+}
+
+
+function refreshTodosDisplay() {
+    const container = document.querySelector('#todos-container');
+    if (container) {
+        container.remove();
+    }
+    displayUI();
+}
+
+export { displayUI, refreshTodosDisplay }

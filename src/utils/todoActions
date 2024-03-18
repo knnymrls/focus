@@ -1,0 +1,46 @@
+import { todo } from "../models/todo"
+import { displayUI } from "./todoDisplayActions"
+
+//TODO: Make sure to add jsdoc comments to all functions
+
+let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+function clear() {
+    todos = [];
+    saveTodos();
+    displayUI();
+}
+
+function createTodo(title) {
+    let index = todos.length
+    let newTodo = new todo(`${title}`, false, index)
+    todos.push(newTodo)
+    saveTodos()
+    displayUI()
+}
+
+/**
+ * Deletes a todo from the todos array
+ * @param {*} index The index of the todo to be deleted
+ */
+function deleteTodo(index) {
+    todos = todos.filter((_, i) => i !== index)
+    reIndex()
+    saveTodos()
+    displayUI()
+}
+
+/**
+ * Re-indexes the todos array to ensure that the index property of each todo is accurate.
+ */
+function reIndex() {
+    todos.forEach((todo, index) => {
+        todo.index = index;
+    });
+}
+
+export { createTodo, deleteTodo, reIndex, todos, clear }
