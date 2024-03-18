@@ -2,8 +2,9 @@ import { deleteTodo, todos } from './todoActions';
 import { saveTodos } from './todoActions';
 import TodoCard from '../components/todoCard';
 
-//TODO: Make sure to add jsdoc comments to all functions
-
+/**
+ * Clears the UI by removing the todos container
+ */
 function clearUI() {
     const container = document.querySelector('#todos-container');
     if (container) {
@@ -11,6 +12,11 @@ function clearUI() {
     }
 }
 
+/**
+ * Creates a delete button for a todo
+ * @param index index of the todo to be deleted
+ * @returns delete button element
+ */
 function createDeleteButton(index) {
     const delBtn = document.createElement('button');
     delBtn.textContent = 'Delete';
@@ -21,7 +27,13 @@ function createDeleteButton(index) {
     return delBtn;
 }
 
+/**
+ * Creates a todo card element
+ * @param todo todo object
+ * @returns todo card element
+ */
 function displayTodos(todosContainer) {
+    //for each todo, create a todo card and append it to the todos container
     todos.forEach((todo) => {
         const todoCard = TodoCard(todo, {
             onDelete: () => deleteTodo(todo.index),
@@ -31,23 +43,28 @@ function displayTodos(todosContainer) {
     });
 }
 
+/**
+ * Displays the UI
+ */
 function displayUI() {
+    // Clear the UI
     clearUI();
 
+    // Create the todos container
     const todosContainer = document.createElement('div');
     todosContainer.id = 'todos-container';
     document.querySelector('main').appendChild(todosContainer);
 
+    // Display the todos
     displayTodos(todosContainer);
 }
 
 function toggleTodoCompletion(todoToToggle) {
-
+    //toggles the completed property of the todo
     todoToToggle.completed = !todoToToggle.completed;
 
-
     saveTodos();
-    refreshTodosDisplay();
+    displayUI();
 }
 
 

@@ -159,3 +159,49 @@ input[type="checkbox"]:checked::after {
   text-decoration: line-through;
   opacity: 0.75;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+  body {
+    margin-top: 2vw;
+  }
+
+  h1 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+  }
+
+  #timer {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  main {
+    width: 80vw;
+  }
+
+  input {
+    font-size: 16px;
+  }
+
+  #clear-button {
+    font-size: 14px;
+  }
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+
+  input[type="checkbox"]:checked::after {
+    font-size: 16px;
+  }
+
+  .todo-card {
+    font-size: 16px;
+  }
+
+  .todo-card label {
+    font-size: 16px;
+  }
+}

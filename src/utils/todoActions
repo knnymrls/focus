@@ -1,20 +1,29 @@
 import { todo } from "../models/todo"
 import { displayUI } from "./todoDisplayActions"
 
-//TODO: Make sure to add jsdoc comments to all functions
-
+// Load the todos from local storage or create an empty array if there are no todos
 let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
+/**
+ * Saves the todos array to local storage
+ */
 function saveTodos() {
     localStorage.setItem('todos', JSON.stringify(todos));
 }
 
+/**
+ * Clears the todos array and saves the empty array to local storage
+ */
 function clear() {
     todos = [];
     saveTodos();
     displayUI();
 }
 
+/**
+ * Creates a new todo and adds it to the todos array
+ * @param title The title of the todo to be created
+ */
 function createTodo(title) {
     let index = todos.length
     let newTodo = new todo(`${title}`, false, index)
