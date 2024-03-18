@@ -2,5 +2,5 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-    base: '/<repository-name>/'
+    base: 'https://knnymrls.github.io/focus/'
 });
