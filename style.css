@@ -111,7 +111,6 @@ input[type="checkbox"]:checked::after {
 }
 
 input[type="checkbox"]:checked::after {
-  content: "✔";
   color: #fff;
   position: absolute;
   left: 50%;
