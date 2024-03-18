@@ -43,4 +43,4 @@ function reIndex() {
     });
 }
 
-export { createTodo, deleteTodo, reIndex, todos, clear }
+export { createTodo, deleteTodo, reIndex, todos, clear, saveTodos }

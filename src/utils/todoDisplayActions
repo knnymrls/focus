@@ -1,4 +1,5 @@
 import { deleteTodo, todos } from './todoActions';
+import { saveTodos } from './todoActions';
 import TodoCard from '../components/todoCard';
 
 //TODO: Make sure to add jsdoc comments to all functions
@@ -23,20 +24,30 @@ function createDeleteButton(index) {
 function displayTodos(todosContainer) {
     todos.forEach((todo) => {
         const todoCard = TodoCard(todo, {
-            onDelete: () => deleteTodo(todo.index)
+            onDelete: () => deleteTodo(todo.index),
+            onToggleCompletion: () => toggleTodoCompletion(todo)
         });
         todosContainer.appendChild(todoCard);
     });
 }
 
 function displayUI() {
-    clearUI(); // Clear the UI before redrawing
+    clearUI();
 
     const todosContainer = document.createElement('div');
     todosContainer.id = 'todos-container';
-    document.querySelector('#app').appendChild(todosContainer);
+    document.querySelector('main').appendChild(todosContainer);
 
     displayTodos(todosContainer);
+}
+
+function toggleTodoCompletion(todoToToggle) {
+
+    todoToToggle.completed = !todoToToggle.completed;
+
+
+    saveTodos();
+    refreshTodosDisplay();
 }
 
 
